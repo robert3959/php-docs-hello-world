@@ -2,7 +2,12 @@
 
 echo 'Twoje IP: '.$_SERVER['REMOTE_ADDR'];
 echo '  </p>  ';
-echo 'Drugie IP: '.$_SERVER['HTTP_X_FORWARDED_FOR'];
+$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+$ip_parts = explode(':', $ip);
+$cleaned_ip = trim($ip_parts[0]);
+
+echo 'Drugie IP: '.$cleaned_ip;
+
 echo '  </p>  ';
 echo 'Host: '.gethostbyaddr($_SERVER['REMOTE_ADDR']);
 echo '  ';
